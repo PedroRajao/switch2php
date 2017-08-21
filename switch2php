@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    echo 'Usage:  swap2php <version>'
+    exit 1
+fi
+
+VERSION=$1
+VERSIONS=$(update-alternatives --list php | grep -oP "\d.\d")
+
+if [[ ! $VERSIONS =~ $VERSION ]]
+then
+  echo "PHP $VERSION is not currently installed"
+  exit 1
+fi
+
+for version in $VERSIONS; do
+    a2dismod php$version 1> /dev/null
+done
+
+a2enmod php$VERSION
+update-alternatives --set php /usr/bin/php$VERSION 1> /dev/null
+update-alternatives --set phar /usr/bin/phar$VERSION
+update-alternatives --set phar.phar /usr/bin/phar.phar$VERSION
+
+echo "PHP swapped to $VERSION"
