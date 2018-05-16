@@ -26,3 +26,5 @@ update-alternatives --set phar.phar /usr/bin/phar.phar$VERSION
 echo "PHP swapped to $VERSION"
 
 sudo apachectl restart
+
+php -v
