@@ -7,7 +7,6 @@ $PATH, like `/usr/bin`.
 
 ```
 sudo switch2php 7.0
-sudo apachectl restart
 ```
 
 # Under the hood
