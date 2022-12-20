@@ -23,7 +23,7 @@ update-alternatives --set php /usr/bin/php$VERSION 1> /dev/null
 update-alternatives --set phar /usr/bin/phar$VERSION
 update-alternatives --set phar.phar /usr/bin/phar.phar$VERSION
 
-sudo apachectl restart
+sudo service apache2 restart
 
 echo "PHP swapped to:" 
 php -v
